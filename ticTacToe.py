@@ -1,3 +1,8 @@
+
+theBoard = {'top-L': ' ', 'top-M': ' ', 'top-R': ' ',
+            'mid-L': ' ', 'mid-M': ' ', 'mid-R': ' ',
+            'low-L': ' ', 'low-M': ' ', 'low-R': ' '}
+
 def printBoard(board):
     # TO DO #################################################################
     # Write code in this function that prints the game board.               #
@@ -6,6 +11,13 @@ def printBoard(board):
     #                                                                       #
     # Hint: you can follow the same process that was done in the textbook.  #
     #########################################################################
+
+    print(board['top-L'] + '|' + board['top-M'] + '|' + board['top-R'])
+    print('-+-+-')
+    print(board['mid-L'] + '|' + board['mid-M'] + '|' + board['mid-R'])
+    print('-+-+-')
+    print(board['low-L'] + '|' + board['low-M'] + '|' + board['low-R'])
+printBoard(theBoard)
 
 def checkWinner(board, player):    
     print('Checking if ' + player + ' is a winner...')
@@ -18,7 +30,16 @@ def checkWinner(board, player):
     # variable 'player' has won. The function should return False           #
     # if the player in the variable 'player' has not won.                   #
     #########################################################################
-    
+
+    return ((board[7]==player and board[8]==player and board[9]==player) or
+    (board[4]==player and board[5]==player and board[6]==player) or
+    (board[1]==player and board[2]==player and board[3]==player) or
+    (board[7]==player and board[4]==player and board[1]==player) or
+    (board[8]==player and board[5]==player and board[2]==player) or
+    (board[9]==player and board[6]==player and board[3]==player) or
+    (board[7]==player and board[5]==player and board[3]==player) or
+    (board[9]==player and board[5]==player and board[1]==player))
+
     
 def startGame(startingPlayer, board):
     # TO DO #################################################################
@@ -28,11 +49,11 @@ def startGame(startingPlayer, board):
 
     turn = startingPlayer
     for i in range(9):
-        printBoard(board)
+        printBoard(board) #The new code prints out the board at the start of each new turn.
         print('Turn for ' + turn + '. Move on which space?')
-        move = input()
-        board[move] = turn
-        if( checkWinner(board, 'X') ):
+        move = input() #gets the active players move
+        board[move] = turn #updates the game board accordingly
+        if( checkWinner(board, 'X') ): #swaps the active player before moving on to the next turn
             print('X wins!')
             break
         elif ( checkWinner(board, 'O') ):
