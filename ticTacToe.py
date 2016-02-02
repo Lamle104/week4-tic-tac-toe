@@ -31,14 +31,14 @@ def checkWinner(board, player):
     # if the player in the variable 'player' has not won.                   #
     #########################################################################
 
-    return ((board['top-L']==player and board['top-M']==player and board['top-R']==player) or
-    (board['mid-L']==player and board['mid-M']==player and board['mid-R']==player) or
-    (board['low-L']==player and board['low-M']==player and board['low-R']==player) or
-    (board['top-L']==player and board['mid-L']==player and board['low-L']==player) or
-    (board['top-M']==player and board['mid-M']==player and board['low-M']==player) or
-    (board['top-R']==player and board['mid-R']==player and board['low-R']==player) or
-    (board['top-L']==player and board['mid-M']==player and board['low-R']==player) or
-    (board['top-R']==player and board['mid-M']==player and board['low-L']==player))
+    return ((board['top-L']==player and board['top-M']==player and board['top-R']==player) or #across the top 
+    (board['mid-L']==player and board['mid-M']==player and board['mid-R']==player) or #across the middle
+    (board['low-L']==player and board['low-M']==player and board['low-R']==player) or #across the bottom
+    (board['top-L']==player and board['mid-L']==player and board['low-L']==player) or #down the left side
+    (board['top-M']==player and board['mid-M']==player and board['low-M']==player) or #down the middle
+    (board['top-R']==player and board['mid-R']==player and board['low-R']==player) or #down the right side
+    (board['top-L']==player and board['mid-M']==player and board['low-R']==player) or #diagonal
+    (board['top-R']==player and board['mid-M']==player and board['low-L']==player)) #diagonal
 
     
 def startGame(startingPlayer, board):
@@ -47,23 +47,23 @@ def startGame(startingPlayer, board):
     # is happening. You do not need to modify any of the Python code        #
     #########################################################################
 
-    turn = startingPlayer 
-    for i in range(9): 
+    turn = startingPlayer #1st players move
+    for i in range(9): #loops through the 9 squares
         printBoard(board) #The new code prints out the board at the start of each new turn.
-        print('Turn for ' + turn + '. Move on which space?')
+        print('Turn for ' + turn + '. Move on which space?') #prints the persons turn
         move = input() #gets the active players move
         board[move] = turn #updates the game board accordingly
         if( checkWinner(board, 'X') ): #swaps the active player before moving on to the next turn
-            print('X wins!')
-            break
-        elif ( checkWinner(board, 'O') ):
-            print('O wins!')
-            break
+            print('X wins!') #prints X wins
+            break #Exit
+        elif ( checkWinner(board, 'O') ): #Checks to see no one wins
+            print('O wins!') #states that O WINS
+            break #Exits
     
-        if turn == 'X':
-            turn = 'O'
+        if turn == 'X': #player X turn 
+            turn = 'O' #player 0 turn
         else:
-            turn = 'X'
+            turn = 'X' #player X turn
         
     printBoard(board) 
     
