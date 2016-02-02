@@ -1,4 +1,4 @@
-
+#Lam Le
 theBoard = {'top-L': ' ', 'top-M': ' ', 'top-R': ' ',
             'mid-L': ' ', 'mid-M': ' ', 'mid-R': ' ',
             'low-L': ' ', 'low-M': ' ', 'low-R': ' '}
@@ -31,14 +31,14 @@ def checkWinner(board, player):
     # if the player in the variable 'player' has not won.                   #
     #########################################################################
 
-    return ((board[7]==player and board[8]==player and board[9]==player) or
-    (board[4]==player and board[5]==player and board[6]==player) or
-    (board[1]==player and board[2]==player and board[3]==player) or
-    (board[7]==player and board[4]==player and board[1]==player) or
-    (board[8]==player and board[5]==player and board[2]==player) or
-    (board[9]==player and board[6]==player and board[3]==player) or
-    (board[7]==player and board[5]==player and board[3]==player) or
-    (board[9]==player and board[5]==player and board[1]==player))
+    return ((board['top-L']==player and board['top-M']==player and board['top-R']==player) or
+    (board['mid-L']==player and board['mid-M']==player and board['mid-R']==player) or
+    (board['low-L']==player and board['low-M']==player and board['low-R']==player) or
+    (board['top-L']==player and board['mid-L']==player and board['low-L']==player) or
+    (board['top-M']==player and board['mid-M']==player and board['low-M']==player) or
+    (board['top-R']==player and board['mid-R']==player and board['low-R']==player) or
+    (board['top-L']==player and board['mid-M']==player and board['low-R']==player) or
+    (board['top-R']==player and board['mid-M']==player and board['low-L']==player))
 
     
 def startGame(startingPlayer, board):
@@ -47,8 +47,8 @@ def startGame(startingPlayer, board):
     # is happening. You do not need to modify any of the Python code        #
     #########################################################################
 
-    turn = startingPlayer
-    for i in range(9):
+    turn = startingPlayer 
+    for i in range(9): 
         printBoard(board) #The new code prints out the board at the start of each new turn.
         print('Turn for ' + turn + '. Move on which space?')
         move = input() #gets the active players move
@@ -65,5 +65,5 @@ def startGame(startingPlayer, board):
         else:
             turn = 'X'
         
-    printBoard(board)
+    printBoard(board) 
     
